@@ -2,10 +2,10 @@
 #include <opencv2/opencv.hpp>
 #include <string>
 
-class CVWindow {
+class CVCamWindow {
   public:
-    CVWindow(std::string name, int camera = 0);
-    virtual ~CVWindow();
+    CVCamWindow(std::string name = "My experiment", int camera = 0);
+    virtual ~CVCamWindow();
     virtual void open() final;
 
   protected:
@@ -16,12 +16,12 @@ class CVWindow {
     int _camera;
 };
 
-CVWindow::CVWindow(std::string name, int camera)
+CVCamWindow::CVCamWindow(std::string name, int camera)
     : _name(name), _camera(camera) {}
 
-CVWindow::~CVWindow() {}
+CVCamWindow::~CVCamWindow() {}
 
-void CVWindow::open() {
+void CVCamWindow::open() {
     // Open the default video camera
     cv::VideoCapture cap(0);
 
@@ -68,4 +68,4 @@ void CVWindow::open() {
     }
 }
 
-cv::Mat &CVWindow::buildFrame(cv::Mat &frame) { return frame; }
+cv::Mat &CVCamWindow::buildFrame(cv::Mat &frame) { return frame; }

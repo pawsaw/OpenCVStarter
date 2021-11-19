@@ -1,14 +1,11 @@
-#include "CVWindow.cpp"
+#include "CVCamWindow.cpp"
 #include <iostream>
 #include <opencv2/opencv.hpp>
 
 using namespace cv;
 using namespace std;
 
-class MyExperiment : public CVWindow {
-  public:
-    MyExperiment() : CVWindow("My Experiment") {}
-    ~MyExperiment() {}
+class MyExperiment : public CVCamWindow {
 
   private:
     cv::Mat &buildFrame(cv::Mat &frame) override final {
@@ -21,7 +18,7 @@ class MyExperiment : public CVWindow {
         // Mat kernel(cv::Size2i(3, 3), CV_32SC1, values);
         // cv::filter2D(frame, frame, -1, kernel);
 
-        cv::GaussianBlur(frame, frame, cv::Size2i(3, 3), 0);
+        cv::GaussianBlur(frame, frame, cv::Size2i(5, 5), 0);
 
         // int values[3][3] = {{0, -1, 0}, {-1, 5, -1}, {0, -1, 0}};
         // Mat kernel(cv::Size2i(3, 3), CV_32SC1, values);
